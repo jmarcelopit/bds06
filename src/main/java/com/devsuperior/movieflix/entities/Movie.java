@@ -41,15 +41,11 @@ public class Movie {
 	
 	public Movie() {
 		
-	}
-
-	
+	}	
 
 	public Set<Review> getReviews() {
 		return reviews;
 	}
-
-
 
 	public Movie(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, Genre genre) {
 		this.id = id;
@@ -61,19 +57,13 @@ public class Movie {
 		this.genre = genre;
 	}
 
-
-
 	public Genre getGenre() {
 		return genre;
 	}
 
-
-
 	public void setGenre(Genre genre) {
 		this.genre = genre;
 	}
-
-
 
 	public Long getId() {
 		return id;
