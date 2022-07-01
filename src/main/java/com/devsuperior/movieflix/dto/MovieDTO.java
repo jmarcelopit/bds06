@@ -2,10 +2,8 @@ package com.devsuperior.movieflix.dto;
 
 import java.util.HashSet;
 import java.util.Set;
-import com.devsuperior.movieflix.entities.Genre;
+
 import com.devsuperior.movieflix.entities.Movie;
-import com.devsuperior.movieflix.entities.Review;
-import com.devsuperior.movieflix.projections.MovieGenre;
 
 public class MovieDTO {
 	
@@ -16,7 +14,7 @@ public class MovieDTO {
 	private Integer year;
 	private String imgUrl;
 	private String synopsis;	
-	private Genre genre ;		
+	private GenreDTO genre ;		
 	private Set<ReviewDTO> reviews =  new HashSet<>();
 	
 	public MovieDTO() {}
@@ -26,7 +24,7 @@ public class MovieDTO {
 		return reviews;
 	}
 
-	public MovieDTO(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, Genre genre) {
+	public MovieDTO(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, GenreDTO genre) {
 		this.id = id;
 		this.title = title;
 		this.subTitle = subTitle;
@@ -44,31 +42,15 @@ public class MovieDTO {
 		this.year = entity.getYear();
 		this.imgUrl = entity.getImgUrl();
 		this.synopsis = entity.getSynopsis();
-		this.genre = entity.getGenre();
+		this.genre = new GenreDTO(entity.getGenre());
 	}
 	
 		
-	public MovieDTO(Movie entity, Set<Review> rev) {
-		this(entity);
-		rev.forEach(obj -> this.reviews.add(new ReviewDTO(obj)));			
-	}
-	
-	public MovieDTO(MovieGenre entity) {
-		this.id = entity.getIdMovie();
-		this.title= entity.getTitle();
-		this.subTitle = entity.getTitle();
-		this.year = entity.getYear();
-		this.imgUrl = entity.getImgUrl();		
-		this.genre.setId(entity.getIdGenre()); 
-		this.genre.setName(entity.getNameGenre());
-	}
-
-
-	public Genre getGenre() {
+	public GenreDTO getGenre() {
 		return genre;
 	}
 
-	public void setGenre(Genre genre) {
+	public void setGenre(GenreDTO genre) {
 		this.genre = genre;
 	}
 
